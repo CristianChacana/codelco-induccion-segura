@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODELCO - Inducción Segura en Prevención de Riesgos | DS 132 & DS 44</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ENCABEZADO INSTITUCIONAL CODELCO -->
+    <header class="codelco-header">
+        <div class="header-left">
+            <div class="codelco-logo">
+                <span class="logo-mark">C</span>
+                <div class="logo-text">
+                    <span class="company-name">CODELCO</span>
+                    <span class="company-sub">Orgullo de Todos los Chilenos</span>
+                </div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="header-title-box">
+                <h1>SISTEMA INTEGRADO DE INDUCCIÓN Y EVALUACIÓN SEGURA</h1>
+                <span class="normative-tag">DS 132 (Seguridad Minera) • DS 44 (Gestión Preventiva) • ISP • SUSESO</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div id="user-pill" class="user-pill hidden">
+                <div class="user-avatar" id="pill-avatar">OP</div>
+                <div class="user-details">
+                    <span class="user-name" id="pill-name">Juan Pérez</span>
+                    <span class="user-role" id="pill-role">Operador CAEX</span>
+                </div>
+                <button class="btn-logout" id="btn-logout" title="Cerrar Sesión">⏻</button>
+            </div>
+            <div class="security-badge" title="Arquitectura Zero-Trust Server-Side Validated">
+                <span class="badge-icon">🛡️</span>
+                <span class="badge-text">ZERO-TRUST SECURED</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+
+        <!-- ================================================================ -->
+        <!-- PANTALLA 1: INGRESO / LOGIN Y REGISTRO DE TRABAJADOR              -->
+        <!-- ================================================================ -->
+        <section id="view-login" class="view-panel active">
+            <div class="login-wrapper">
+                <div class="login-card">
+                    <div class="login-header">
+                        <div class="safety-helmet-icon">👷‍♂️</div>
+                        <h2>Acreditación de Ingreso a Faena</h2>
+                        <p>Ingrese sus antecedentes para verificar inducción legal obligatoria o iniciar un nuevo proceso formativo.</p>
+                    </div>
+
+                    <form id="form-login" class="login-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="input-rut">RUT del Trabajador</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">🆔</span>
+                                <input type="text" id="input-rut" placeholder="Ej: 12.345.678-9 o 12345678-K" required maxlength="12">
+                            </div>
+                            <span class="input-hint">Formato chileno con o sin puntos y con guión.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-nombre">Nombre Completo</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="input-nombre" placeholder="Nombre y Apellidos" required maxlength="80">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input-cargo">Cargo o Especialidad en Faena</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">⚙️</span>
+                                <select id="input-cargo" required>
+                                    <option value="" disabled selected>Seleccione su cargo en operación...</option>
+                                    <option value="Operador de Camión de Extracción (CAEX)">Operador de Camión de Extracción (CAEX)</option>
+                                    <option value="Minero Perforista / Acuñador Subterráneo">Minero Perforista / Acuñador Subterráneo</option>
+                                    <option value="Mantenedor Mecánico / Eléctrico Industrial">Mantenedor Mecánico / Eléctrico Industrial</option>
+                                    <option value="Operador de Planta Chancado y Molienda">Operador de Planta Chancado y Molienda</option>
+                                    <option value="Ingeniero / Supervisor de Operaciones Mina">Ingeniero / Supervisor de Operaciones Mina</option>
+                                    <option value="Asesor en Prevención de Riesgos (APR)">Asesor en Prevención de Riesgos (APR)</option>
+                                    <option value="Contratista / Empresa Colaboradora">Contratista / Empresa Colaboradora</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-block" id="btn-submit-login">
+                            <span>Ingresar a Plataforma Segura</span>
+                            <span class="arrow-icon">→</span>
+                        </button>
+                    </form>
+
+                    <div id="login-error" class="alert-box error hidden"></div>
+                </div>
+
+                <!-- Tarjeta Lateral de Normativa y Garantías de Seguridad -->
+                <div class="login-sidebar">
+                    <div class="info-card">
+                        <h3>⚖️ Marco Normativo Vinculante</h3>
+                        <ul class="norm-list">
+                            <li><strong>Decreto Supremo N° 132:</strong> Reglamento de Seguridad Minera (Sernageomin). Normas operativas, ventilación, fortificación y explosivos.</li>
+                            <li><strong>Decreto Supremo N° 44:</strong> Nuevo reglamento sobre gestión preventiva de riesgos laborales y Matriz IPER dinámica.</li>
+                            <li><strong>Instituto de Salud Pública (ISP):</strong> Guías técnicas y homologación de EPP (PLANESI para sílice y PREXOR para ruido).</li>
+                            <li><strong>SUSESO (Ley 16.744):</strong> Notificación inmediata de accidentes graves/fatales (Art. 76 bis) y gratuidad absoluta de protecciones.</li>
+                        </ul>
+                    </div>
+
+                    <div class="security-card">
+                        <h3>🔒 Garantía Zero-Trust Anti-Fraude</h3>
+                        <p>Esta aplicación opera con un backend estricto. Las respuestas correctas están cifradas y resguardadas en el servidor. Todo intento de manipulación de payloads, inyección XSS o alteración de calificaciones es bloqueado y registrado en la auditoría.</p>
+                        <button class="btn-outline-small" id="btn-open-audit-direct">🛠️ Ver Consola de Pentesting</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- PANTALLA 2: DASHBOARD PRINCIPAL DEL TRABAJADOR                    -->
+        <!-- ================================================================ -->
+        <section id="view-dashboard" class="view-panel">
+            <!-- Barra Superior del Usuario -->
+            <div class="profile-banner">
+                <div class="profile-meta">
+                    <h2 id="dash-worker-name">Juan Pérez González</h2>
+                    <div class="meta-tags">
+                        <span class="tag tag-rut" id="dash-worker-rut">RUT: 12.345.678-9</span>
+                        <span class="tag tag-role" id="dash-worker-role">Operador CAEX</span>
+                        <span class="tag tag-date" id="dash-worker-date">Registrado: Hoy</span>
+                    </div>
+                </div>
+                <div class="accreditation-status">
+                    <div class="status-indicator" id="status-light"></div>
+                    <div class="status-text">
+                        <span class="status-label">Estado de Acreditación</span>
+                        <span class="status-val" id="dash-accreditation-text">PENDIENTE DE EVALUACIÓN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación de Fases -->
+            <div class="phase-selector">
+                <button class="phase-tab active" data-target="tab-fase1">
+                    <span class="tab-step">FASE 1</span>
+                    <span class="tab-title">Módulo de Aprendizaje (Zonas Críticas)</span>
+                </button>
+                <button class="phase-tab" data-target="tab-fase2">
+                    <span class="tab-step">FASE 2</span>
+                    <span class="tab-title">Evaluación Oficial (15 Preguntas)</span>
+                </button>
+                <button class="phase-tab" data-target="tab-history">
+                    <span class="tab-step">HISTORIAL</span>
+                    <span class="tab-title">Trazabilidad e Intentos Previos</span>
+                </button>
+                <button class="phase-tab" data-target="tab-audit">
+                    <span class="tab-step">AUDITORÍA</span>
+                    <span class="tab-title">Pentesting OWASP en Vivo</span>
+                </button>
+            </div>
+
+            <!-- CONTENIDO DE TABS -->
+
+            <!-- TAB 1: RECORRIDO INTERACTIVO POR ZONAS CRÍTICAS -->
+            <div id="tab-fase1" class="tab-content active">
+                <div class="learning-intro">
+                    <div class="intro-text">
+                        <h3>Recorrido de Inducción Técnica en Terreno</h3>
+                        <p>Explore las <strong>5 Zonas Críticas de la Operación</strong> antes de rendir la evaluación. Cada zona contiene los estándares no negociables, artículos de ley y controles críticos que salvarán su vida en faena.</p>
+                    </div>
+                    <div class="intro-actions">
+                        <button class="btn-primary" id="btn-jump-to-eval">
+                            <span>Ir directo a la Evaluación de 15 Preguntas</span>
+                            <span class="arrow-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="zones-grid">
+                    <!-- Zona 1: Minería Subterránea -->
+                    <div class="zone-card" data-zone="1">
+                        <div class="zone-badge">DS 132 • ART. 142 & 52</div>
+                        <div class="zone-header">
+                            <span class="zone-icon">⛏️</span>
+                            <h4>Mina Subterránea</h4>
+                        </div>
+                        <p class="zone-summary">Control de atmósfera, ventilación forzada y fortificación de frentes.</p>
+                        <div class="zone-details">
+                            <ul>
+                                <li><strong>Prohibición Absoluta de Motores a Bencina (Art. 142):</strong> Terminantemente prohibido el ingreso de vehículos con motor a gasolina debido a la generación crítica de monóxido de carbono (CO).</li>
+                                <li><strong>Concentración de Oxígeno (Art. 138):</strong> Límite inferior legal no negociable de <strong>19.5% de O2</strong> en volumen en toda galería o frente.</li>
+                                <li><strong>Inspección y Acuñadura Permanente (Art. 52):</strong> Obligación ineludible de acuñar techos y cajas antes de cualquier intervención.</li>
+                            </ul>
+                        </div>
+                        <div class="zone-status-btn">Zona Estudiada ✓</div>
+                    </div>
+
+                    <!-- Zona 2: Rajo Abierto y CAEX -->
+                    <div class="zone-card" data-zone="2">
+                        <div class="zone-badge">DS 132 • TRÁNSITO MINA</div>
+                        <div class="zone-header">
+                            <span class="zone-icon">🚛</span>
+                            <h4>Mina a Rajo Abierto</h4>
+                        </div>
+                        <p class="zone-summary">Interacción segura entre vehículos livianos y equipos de alto tonelaje.</p>
+                        <div class="zone-details">
+                            <ul>
+                                <li><strong>Pértiga y Luz Estroboscópica:</strong> Camionetas deben portar pértiga flexible no inferior a 4.5 metros de altura con luz destellante y banderín.</li>
+                                <li><strong>Distancia de Seguridad:</strong> Mantener al menos <strong>50 metros</strong> de separación con camiones CAEX en movimiento.</li>
+                                <li><strong>Puntos Ciegos y Radiofrecuencia:</strong> Comunicación radial obligatoria en la frecuencia mina asignada antes de adelantar o aproximarse.</li>
+                            </ul>
+                        </div>
+                        <div class="zone-status-btn">Zona Estudiada ✓</div>
+                    </div>
+
+                    <!-- Zona 3: Planta Concentradora & Chancado -->
+                    <div class="zone-card" data-zone="3">
+                        <div class="zone-badge">ISP • PLANESI & PREXOR</div>
+                        <div class="zone-header">
+                            <span class="zone-icon">🏭</span>
+                            <h4>Chancado y Concentradora</h4>
+                        </div>
+                        <p class="zone-summary">Control de agentes químicos (sílice) y físicos (ruido ocupacional).</p>
+                        <div class="zone-details">
+                            <ul>
+                                <li><strong>Sílice Libre Cristalizada (PLANESI):</strong> Uso mandatorio de protección respiratoria con filtros de alta eficiencia <strong>P100 / HEPA</strong> con prueba de ajuste hermético.</li>
+                                <li><strong>Ruido Ocupacional (PREXOR):</strong> Criterio de acción en <strong>82 dBA</strong> y Límite Permisible Ponderado de <strong>85 dBA</strong> para 8 horas.</li>
+                                <li><strong>Gratuidad de EPP:</strong> Prohibida por ley cualquier compensación económica por elementos de protección personal.</li>
+                            </ul>
+                        </div>
+                        <div class="zone-status-btn">Zona Estudiada ✓</div>
+                    </div>
+
+                    <!-- Zona 4: Mantenimiento & Subestaciones -->
+                    <div class="zone-card" data-zone="4">
+                        <div class="zone-badge">REGLAS QUE SALVAN LA VIDA</div>
+                        <div class="zone-header">
+                            <span class="zone-icon">🔒</span>
+                            <h4>Aislamiento, LOTO y Altura</h4>
+                        </div>
+                        <p class="zone-summary">Desenergización, bloqueo personal intransferible y trabajo sobre 1.8m.</p>
+                        <div class="zone-details">
+                            <ul>
+                                <li><strong>Estándar LOTO de Energía Cero:</strong> Desenergizar, colocar candado personal y tarjeta, y verificar ausencia de energía residual. Prohibido transferir el candado.</li>
+                                <li><strong>Trabajo en Altura (>1.8m):</strong> Arnés de cuerpo completo de 3 o 4 argollas certificado ISP con doble cabo de vida y amortiguador.</li>
+                                <li><strong>Punto de Anclaje Certificado:</strong> Resistencia mínima garantizada de <strong>5.000 lb (22.2 kN)</strong> por persona conectada.</li>
+                            </ul>
+                        </div>
+                        <div class="zone-status-btn">Zona Estudiada ✓</div>
+                    </div>
+
+                    <!-- Zona 5: Polvorines & Gestión Preventiva -->
+                    <div class="zone-card" data-zone="5">
+                        <div class="zone-badge">DS 44 & SUSESO</div>
+                        <div class="zone-header">
+                            <span class="zone-icon">📋</span>
+                            <h4>Gestión Preventiva e IPER</h4>
+                        </div>
+                        <p class="zone-summary">Matriz IPER dinámica, CPHS, explosivos y Ley 16.744.</p>
+                        <div class="zone-details">
+                            <ul>
+                                <li><strong>Matriz IPER Dinámica (DS 44):</strong> Evaluación sistemática y continua de peligros antes de realizar tareas críticas.</li>
+                                <li><strong>Suspensión Inmediata por Accidente Grave (Art. 76 bis):</strong> Paralización obligatoria de faena y aviso inmediato a las autoridades.</li>
+                                <li><strong>Manipulación de Explosivos:</strong> Exigencia de licencia oficial emitida por la Autoridad Fiscalizadora de Carabineros (Ley 17.798).</li>
+                            </ul>
+                        </div>
+                        <div class="zone-status-btn">Zona Estudiada ✓</div>
+                    </div>
+                </div>
+
+                <div class="learning-footer">
+                    <button class="btn-primary btn-large" id="btn-start-evaluation-from-tour">
+                        <span>He Completado el Recorrido: Comenzar Evaluación de 15 Preguntas</span>
+                        <span class="arrow-icon">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 2: EVALUACIÓN FORMAL DE 15 PREGUNTAS -->
+            <div id="tab-fase2" class="tab-content">
+                <!-- Estado del Intento Actual -->
+                <div class="eval-progress-bar-container">
+                    <div class="eval-progress-meta">
+                        <span id="eval-progress-text">Pregunta 1 de 15</span>
+                        <span id="eval-category-tag" class="category-tag">DS 132</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="eval-progress-fill" class="progress-fill" style="width: 6.66%;"></div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Pregunta Dinámica -->
+                <div class="question-container" id="question-card">
+                    <div class="question-header">
+                        <div class="q-type-badge" id="q-type-badge">Verdadero / Falso</div>
+                        <div class="q-number" id="q-number">PREGUNTA #1</div>
+                    </div>
+
+                    <h3 class="question-text" id="q-text">Cargando pregunta desde el backend seguro...</h3>
+
+                    <!-- Contenedor dinámico de opciones -->
+                    <div class="options-container" id="options-container">
+                        <!-- Se puebla dinámicamente con app.js -->
+                    </div>
+
+                    <!-- Botón de acción para selección múltiple -->
+                    <div class="action-submit-box hidden" id="action-submit-box">
+                        <button class="btn-primary" id="btn-submit-multiple">
+                            <span>Confirmar Selección y Validar en Servidor</span>
+                            <span class="arrow-icon">→</span>
+                        </button>
+                    </div>
+
+                    <!-- Recuadro de Feedback y Justificación Legal Inmediata -->
+                    <div class="feedback-card hidden" id="feedback-card">
+                        <div class="feedback-header">
+                            <span class="feedback-icon" id="feedback-icon">✓</span>
+                            <span class="feedback-title" id="feedback-title">¡RESPUESTA CORRECTA!</span>
+                        </div>
+                        <div class="feedback-body">
+                            <p class="official-solution" id="feedback-solution"></p>
+                            <div class="legal-justification">
+                                <strong>Fundamento Técnico y Legal:</strong>
+                                <p id="feedback-justification"></p>
+                            </div>
+                        </div>
+                        <div class="feedback-footer">
+                            <button class="btn-primary" id="btn-next-question">
+                                <span>Siguiente Pregunta</span>
+                                <span class="arrow-icon">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pantalla Final de Resultados del Intento -->
+                <div class="results-container hidden" id="results-card">
+                    <div class="results-header" id="results-header-box">
+                        <div class="results-icon" id="results-badge-icon">🏆</div>
+                        <h2 id="results-title">EVALUACIÓN COMPLETADA</h2>
+                        <span class="results-subtitle" id="results-cert-text">Certificación Oficial CODELCO</span>
+                    </div>
+
+                    <div class="results-score-panel">
+                        <div class="score-circle">
+                            <span class="score-number" id="results-percent">0%</span>
+                            <span class="score-label">Nota Final Obtenida</span>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="stat-row">
+                                <span>Total de Preguntas Auditadas:</span>
+                                <strong>15</strong>
+                            </div>
+                            <div class="stat-row text-success">
+                                <span>Respuestas Correctas:</span>
+                                <strong id="results-correct">0</strong>
+                            </div>
+                            <div class="stat-row text-danger">
+                                <span>Respuestas Incorrectas:</span>
+                                <strong id="results-incorrect">0</strong>
+                            </div>
+                            <div class="stat-row">
+                                <span>Exigencia Mínima de Acreditación:</span>
+                                <strong>85.0%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn-primary" id="btn-review-learning">
+                            <span>📖 Repasar Materia Técnica</span>
+                        </button>
+                        <button class="btn-secondary" id="btn-retry-eval">
+                            <span>🔄 Rendir Nuevo Intento</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: HISTORIAL COMPLETO DE INTENTOS -->
+            <div id="tab-history" class="tab-content">
+                <div class="history-container">
+                    <div class="history-header">
+                        <h3>Trazabilidad e Inmutabilidad de Evaluaciones</h3>
+                        <p>Registro histórico auditado de todas las evaluaciones rendidas por el colaborador.</p>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table" id="table-history">
+                            <thead>
+                                <tr>
+                                    <th># Intento</th>
+                                    <th>Fecha y Hora</th>
+                                    <th>Correctas</th>
+                                    <th>Total</th>
+                                    <th>Porcentaje</th>
+                                    <th>Dictamen Legal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-history">
+                                <tr>
+                                    <td colspan="6" class="text-center">No hay evaluaciones registradas aún.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: CONSOLA DE AUDITORÍA Y PENTESTING OWASP -->
+            <div id="tab-audit" class="tab-content">
+                <div class="audit-container">
+                    <div class="audit-header">
+                        <div class="audit-title-box">
+                            <span class="terminal-icon">💻</span>
+                            <div>
+                                <h3>Consola de Ciberseguridad y Pentesting Automatizado</h3>
+                                <p>Simulación de ataques controlados contra la API para certificar el blindaje Zero-Trust.</p>
+                            </div>
+                        </div>
+                        <button class="btn-danger" id="btn-run-pentest">
+                            <span>⚡ Ejecutar Suite de Pentesting OWASP</span>
+                        </button>
+                    </div>
+
+                    <!-- Panel de Pruebas -->
+                    <div class="pentest-grid">
+                        <div class="pentest-card" id="test-card-xss">
+                            <div class="test-header">
+                                <span class="test-icon">🛡️</span>
+                                <h4>Test A: Inyección de Código (Anti-XSS)</h4>
+                            </div>
+                            <p>Envía payloads con scripts maliciosos en campos de login para validar el escape y sanitización.</p>
+                            <div class="test-result-pill" id="result-pill-xss">Pendiente</div>
+                        </div>
+
+                        <div class="pentest-card" id="test-card-tamper">
+                            <div class="test-header">
+                                <span class="test-icon">🔒</span>
+                                <h4>Test B: Manipulación de Payloads (Anti-Tampering)</h4>
+                            </div>
+                            <p>Intenta forzar el porcentaje de aprobación al 100% por cliente y enviar doble respuesta a una pregunta.</p>
+                            <div class="test-result-pill" id="result-pill-tamper">Pendiente</div>
+                        </div>
+
+                        <div class="pentest-card" id="test-card-leak">
+                            <div class="test-header">
+                                <span class="test-icon">🕵️</span>
+                                <h4>Test C: Fuga de Datos (Zero-Leakage)</h4>
+                            </div>
+                            <p>Inspecciona las peticiones a <code>/api/evaluacion/preguntas</code> comprobando la ausencia de soluciones.</p>
+                            <div class="test-result-pill" id="result-pill-leak">Pendiente</div>
+                        </div>
+                    </div>
+
+                    <!-- Terminal de Salida en Vivo -->
+                    <div class="terminal-console">
+                        <div class="terminal-bar">
+                            <span class="term-dot red"></span>
+                            <span class="term-dot yellow"></span>
+                            <span class="term-dot green"></span>
+                            <span class="term-title">terminal://codelco-secops-audit-console</span>
+                        </div>
+                        <pre class="terminal-body" id="pentest-log">[SISTEMA] Consola SecOps inicializada. Presione 'Ejecutar Suite de Pentesting OWASP' para iniciar el escaneo...</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="codelco-footer">
+        <div class="footer-content">
+            <span>CODELCO CHILE — Dirección Corporativa de Seguridad y Salud Ocupacional</span>
+            <span>Sistema Certificado DS 132 / DS 44 / ISP / SUSESO</span>
+            <span class="version-label">v2.0.0 (Zero-Trust Compliant)</span>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
